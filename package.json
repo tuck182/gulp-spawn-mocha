@@ -1,12 +1,13 @@
 {
-  "name": "gulp-spawn-mocha",
+  "name": "@ookla/gulp-spawn-mocha",
   "version": "3.1.0",
   "description": "Runs Mocha as a child process.",
+
   "main": "lib/index.js",
   "scripts": {
     "test": "gulp test"
   },
-  "repository": "KenPowers/gulp-spawn-mocha",
+  "repository": "tuck182/gulp-spawn-mocha",
   "keywords": [
     "gulpplugin",
     "mocha",
@@ -18,11 +19,17 @@
     "name": "Kenneth Powers",
     "email": "ken@kenpowers.net"
   },
+  "contributors": [
+    {
+      "name": "Matt Tucker",
+      "email": "matt@ookla.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KenPowers/gulp-spawn-mocha/issues"
+    "url": "https://github.com/tuck182/gulp-spawn-mocha/issues"
   },
-  "homepage": "https://github.com/KenPowers/gulp-spawn-mocha",
+  "homepage": "https://github.com/tuck182/gulp-spawn-mocha",
   "dependencies": {
     "gulp-util": "~3.0.7",
     "lodash": "^4.11.1",
