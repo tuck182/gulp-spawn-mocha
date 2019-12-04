@@ -3,7 +3,7 @@ describe('gulp-spawn-mocha tests', function () {
       through = require('through'),
       proc = require('child_process'),
       join = require('path').join,
-      PluginError = require('gulp-util').PluginError,
+      PluginError = require('plugin-error'),
       fs = require('fs');
 
   beforeEach(function () {
@@ -116,25 +116,25 @@ describe('gulp-spawn-mocha tests', function () {
   });
 
   describe('istanbul functionality', function () {
-    var bin = join(require.resolve('istanbul'), '..', require('istanbul/package.json').bin.istanbul);
+    var bin = join(require.resolve('nyc'), '..', require('nyc/package.json').bin.nyc);
     var mbin = join(require.resolve('mocha'), '..', 'bin', '_mocha');
 
     it('should properly call istanbul with no arguments', function () {
       var stream = this.stream = mocha({istanbul: true});
       stream.end();
-      proc.fork.should.be.calledWith(bin, ['cover', '--', mbin]);
+      proc.fork.should.be.calledWith(bin, ['--', mbin]);
     });
 
     it('should properly call istanbul with one more more arguments', function () {
       var stream = this.stream = mocha({istanbul: {verbose: true, print: 'detail'}});
       stream.end();
-      proc.fork.should.be.calledWith(bin, ['cover', '--verbose', '--print', 'detail', '--', mbin]);
+      proc.fork.should.be.calledWith(bin, ['--verbose', '--print', 'detail', '--', mbin]);
     });
 
     it('can use a custom binary', function () {
       var stream = this.stream = mocha({istanbul: {bin: 'isparta'}});
       stream.end();
-      proc.fork.should.be.calledWith('isparta', ['cover', '--', mbin]);
+      proc.fork.should.be.calledWith('isparta', ['--', mbin]);
     });
   });
 });
